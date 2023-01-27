@@ -32,7 +32,8 @@ git fetch [alias]
 git merge [alias]/[branch]
 
 // Transmit local branch commits to the remote repository branch
-git bush [alias] [branch]
+git push [alias] [branch]
+"git push -u origin main"
 
 // Fetch and merge any commits from the tracking remote branch
 git pull
