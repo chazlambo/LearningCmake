@@ -1,0 +1,38 @@
+// Initialize Git Repository
+git init
+
+// Clone an Existing Repository
+git clone [url]
+
+// Show modified files in working directory, staged for your next commit
+git status
+
+// Add a file as it looks now to your next commit
+git add [file]
+
+// Unstage a file while retaining teh changes in working directory
+git reset [file]
+
+// Commit your staged content as a new commit snapshot
+git commmit -m "[descriptive message]"
+
+// List your branches, a * will occur next to currently active branch
+git branch
+
+// Createa  new branch at current commit
+git branch [branch-name]
+
+// Add a git URL as an alias
+git remote add [alias][url]
+
+// Fetch down all the branches from that Git remote
+git fetch [alias]
+
+// Merge a remote branch into your current branch to bring it up to date
+git merge [alias]/[branch]
+
+// Transmit local branch commits to the remote repository branch
+git bush [alias] [branch]
+
+// Fetch and merge any commits from the tracking remote branch
+git pull

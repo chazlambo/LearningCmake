@@ -1,0 +1,3 @@
+/home/charlie/Documents/CmakeTutorial/HelloWorld/build/CMakeFiles/hello_world.dir
+/home/charlie/Documents/CmakeTutorial/HelloWorld/build/CMakeFiles/edit_cache.dir
+/home/charlie/Documents/CmakeTutorial/HelloWorld/build/CMakeFiles/rebuild_cache.dir

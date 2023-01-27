@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/write_to_file.dir/WriteToFile.cpp.o -o write_to_file 
