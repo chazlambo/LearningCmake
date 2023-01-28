@@ -1,0 +1,56 @@
+bits: single value
+	-Either 0 or 1
+byte: collection of 8 bits
+
+Number: an ordered collection of bits
+	- Decimal: Base 10
+		-10 digits, 0-9
+		-Each column 10x bigger
+	- Binary: Base 2
+		-2 digits, 0-1
+		-Each column 2x bigger
+	- Hexadecimal: Base 16
+
+Negative Integers: 
+	One's Complement: Flip 0's and 1's
+	Two's Complement: One's Complement + 1
+		a = 5
+		a -> 0101
+		One's Complement: 1010
+		Two's Complement: 1011
+		--> (-5) = 1011
+		Note: This is reversible!
+
+int: 32-bit complement signed integers
+	- (-2^31 to 2^31 -1)
+	- Most common type
+
+unsigned int - 32-bit unsigned integer
+	- (0 to 2^32 -1)
+
+short: 16 bit int
+
+long: in practice same as int
+	- Compiler dependent (AVOID)
+	- 64 bits on 64-bit machines
+	- 32 bits on 32-bit machines
+
+long long: 64 bit int
+	- (-2^63 to 2^63 -1)
+
+unsigned long long: 64 bit unsigned int
+	- (0 to 2^64 -1)
+
+size_t: unsigned type to represent sizes of things in bytes
+	- 64 bits on 64-bit machines
+	- 32 bits on 32-bit machines
+
+C++11 adds the following:
+(Use these if you need since htey make it clear how many bits are used)
+-int8_t
+-int16_t
+-int32_t
+-int64_t
+-uint8_t
+-uint16_t
+-etc...
