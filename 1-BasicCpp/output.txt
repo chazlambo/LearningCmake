@@ -1,0 +1,29 @@
+Hello World
+18
+Enter test string: 
+You entered: Charlie
+TRUE
+
+Loops: 6
+0 1 2 3 4 5 
+
+Case: 0
+Values entered is: -6
+Value is negative
+Value has magnitude greater than 5
+
+Case: 1
+Values entered is: 0
+Value is zero
+
+Case: 2
+Values entered is: 4
+Value is positive
+
+Case: 3
+Values entered is: 10
+Value is positive
+Value has magnitude greater than 5
+
+Will now count to 7:
+1 2 3 4 5 6 7 

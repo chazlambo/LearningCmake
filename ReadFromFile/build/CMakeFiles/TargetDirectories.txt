@@ -1,3 +1,0 @@
-/home/charlie/Documents/CmakeTutorial/ReadFromFile/build/CMakeFiles/write_to_file.dir
-/home/charlie/Documents/CmakeTutorial/ReadFromFile/build/CMakeFiles/edit_cache.dir
-/home/charlie/Documents/CmakeTutorial/ReadFromFile/build/CMakeFiles/rebuild_cache.dir

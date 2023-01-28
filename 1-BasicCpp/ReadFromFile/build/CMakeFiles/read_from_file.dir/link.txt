@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/read_from_file.dir/ReadFromFile.cpp.o -o read_from_file 

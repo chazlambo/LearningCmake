@@ -13,7 +13,7 @@ git add [file]
 // Unstage a file while retaining teh changes in working directory
 git reset [file]
 
-// Commit your staged content as a new commit snapshot
+*// Commit your staged content as a new commit snapshot
 git commmit -m "[descriptive message]"
 
 // List your branches, a * will occur next to currently active branch
@@ -31,9 +31,9 @@ git fetch [alias]
 // Merge a remote branch into your current branch to bring it up to date
 git merge [alias]/[branch]
 
-// Transmit local branch commits to the remote repository branch
+*// Transmit local branch commits to the remote repository branch
 git push [alias] [branch]
 "git push -u origin main"
 
-// Fetch and merge any commits from the tracking remote branch
+*// Fetch and merge any commits from the tracking remote branch
 git pull
