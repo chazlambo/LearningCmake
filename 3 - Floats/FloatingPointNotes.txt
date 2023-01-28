@@ -7,48 +7,84 @@ Floating Point Numbers:
 	Behaviour specified by IEEE-754 standard (rounding, size, range, etc)
 
 Floating Point vs Fixed Point
-	Consider a "toy" number system with 8 bits to represent real numbers
-	NOTE: ALL NUMBERS ARE IN BINARY UNLESS OBVIOUSLY IN DECIMAL
+	-Consider a "toy" number system with 8 bits to represent real numbers
+	-NOTE: ALL NUMBERS ARE IN BINARY UNLESS OBVIOUSLY IN DECIMAL
 
-	Fixed Point: 1 bit for sign, 3 bits before the decimal point
-		Smallest Value:
+	-Fixed point: 1 bit for sign, 3 bits before the decimal point
+		-Smallest Value:
 			-111.1111 = -7.9375
-		Largest Value:
+		-Largest Value
 			111.1111 = 7.9375
-		Difference between 1 and next number
+		-Difference between 1 and next number
 			001.0001 - 001.0000 = 000.0001
 			==> 0.0625
-		Difference between 4 and next number
+		-Difference between 4 and next number
 			100.0001 - 100.0000 = 000.0001
-			==> 0.0625
-		Precision is effectively the same
+			==>000.0001 = 0.0625
+		-Precision is effectively the same
 
-	Floating Point: 1 bit for sign, 3 bits for exponent, 4 bits for mantissa
-		Smallest Value:
-			-1.111 * 2^(111b) = -(1 + 1/2 + 1/4 + 1/8) * 2^7 = -240
-		Largest Value
-			1.111 * 2^(111b) = -(1 + 1/2 + 1/4 + 1/8) * 2^7 = 240
-		Difference between 1 and next number
+	-Floating Point: 1 bit for sign, 3 bits for exponent, 4 bits for mantissa
+		-Smallest Value:
+			-1.111 * 2^(111b) = -(1+ 1/2 + 1/4 + 1/8) x 2^7 = -240
+		-Largest Value
+			1.111 * 2^(111b) = -(1+ 1/2 + 1/4 + 1/8) x 2^7 = 240
+		-Difference between 1 and next number
 			1.001 * 2^0 - 1.000 * 2^0 = 0.001
 			==> 0.0625
-		Difference between 4 and next number
+		-Difference between 4 and next number
 			1.001 * 2^2 - 1.000 * 2^2 = 0.100
 			==> 0.5
-		Differences between values are not uniform
-		Numbers are not distributed evenly
-			As numbers get larger, precision gets coarser
+		-Difference between values are not uniform
+		-Numbers are not distributed evenly
+			-As numbers get larger, precision gets coarser
 
-Floats in C+
-	Normalized scientific notation, in Base-2:
+Floats in C++
+	-Normalized scientific notation, in Base-2:
 		(-1)^S * M * 2^E
 		S = Sign, E = Exponent, M = Mantissa/Fraction
-		Mantissa is fixed to start with a 1
-		e.g. 0.1 = (-1)^0 * 1.6 * 2^(-4)
-
-	32-bit Single Precision 1 bit sign, 8-bit exponent, 23-bit mantissa
-		Accuracy: log10(2^24) + 7 significant digits
-		Range: -3.4E+38 to 3.4E+38
-		Example Number:
+		Mantissa is fixed to start with 1.
+	-e.g. 0.1 = (-1)^0 * 1.6 * 2^(-4)
+	
+	-32-bit Single Precision: 1 bit sign, 8-bit exponent, 23-bit mantissa
+		-Accuracy: log10^(2^24) +` 7 significant digits
+		-Range: -3.4E+38 to +3.4E+38
+		-Example Number
 			0.1 = (-1)^0 * 1.6 * 2^(-4)
 			0.1 = 0011 1101 1100 1100 1100 1100 1100 1100 1101
+				  ^|        |                                ^-Mantissa (last 23 bits)
+			   Sign    ^ 
+		(First Bit)	  Offset (Next eight bits)
+		              Offset is to exponent from 127
+				      Offset is 123 because 123-127 = -4
+				      01111011 =  123
+
+		-Value Stored in float: 0.100000001490116119384765625
+
+	-64-bit Double Precision: 1 bit sign, 11-bit exponent, 52-bit mantissa
+		-Accuracy: log10^(2^53)=~ 16 Significant Digits
+		-Range -1.7E+308 to 1.7E+308
+
+	-Density of 32 bit Float
+		-23-bit mantissa
+		-For fixed E, number of different fractions: 2^23 ~= 8*10^6
+		-For E = 0, Number of floats between 1 - 2 ~ 8*10^6
+		-Similarly:
+			-E = 1,  between 2-4,         ~8e6 floats
+			-E = 2,  between 4-8,         ~8e6 floats
+			-E= 23,  between 2^23 - 2^24, ~8e6 floats
+			-E = 24, between 2^24-2^25,   ~8e6 floats
+		-(2^24-2^23) ~= 1.04 * 8e6
+		-(2^25-2^24) ~= 2.09 * 8e6
+		-This means that we have more numbers to represent than numbers that can be represented
+		-Not all integers > 2^24 can be represented exactly using float
+		-Not all floating-point numbers > 2^24 can be represented exactly using float
+
+	-Real vs Floats in C++
+
+					  REAL NUMBERS		 FLOATS IN C++
+	Range				Infinite			Finite
+	Precision			Infinite			Finite
+	Commutative			  Yes				  Yes
+	Associative			  Yes			 Not Necessarily
+	Distributive		  Yes		     Not Necessarily
 
