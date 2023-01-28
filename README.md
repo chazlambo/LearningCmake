@@ -1,2 +1,2 @@
 # LearningCmake
-Testing Cmake, GitHub, and various C++ things
+Notes for learning C++, git, and Cmake
