@@ -1,0 +1,67 @@
+Organizing Computation: Functions
+	-Writing everything in main doesn't scale to medium/large programs
+		-We want to be able to reuse pieces of code many times and not copy paste
+	-Functions let us organize and re-use blocks of code
+	-Local variables are stored on the stack, a block of memory automatically allocated from the program stack space when we enter the function and released when we return
+		-Stack space for the program is relatively small, a few MB
+		-We'll discuss a much larger memory space, the heap, later in the course
+
+Functions
+	-Similar to functions in math, we cna assign a name to some piece of code that can be called and used elsewhere
+		-useful for organizing and re-using code, making a program easier to understand
+		-e.g 
+		// myfunction(x) = 2+x^2 =~> 
+		double myfunction(double x) {
+			return 2 + x * x;
+		}
+
+Declaration vs Definition
+	-Declaration: Introduces the function name and the type of its parameters and return value.
+		double myfunction(double x);
+
+	-Definition: associates teh function declaration with the functio nbody (the code that will be executed).
+		double myfunction(double x){
+			return 2 + x * x;
+		}
+
+	Note: Multiple declarations are fine as long as they are compatible but definitions are unique
+
+
+CODE FROM VALERIO NOTES:
+--------------------------------------
+Functions.cpp:
+--------------------------------------
+// Functions.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
+#include <iostream>
+
+void HW(int x); // declaration
+// Since we declare the function here, we can put the definition below the code
+
+double myfunction(double x) {// definition
+	return 2 + x * x;
+}
+// Since we didn't declare the function, if we put the definition below the code it would throw errors
+
+int main() {
+	std::cout << "Hello World!\n";
+	HW(0); HW(1); HW(2);
+	// HW(myfunction(2)); // Gives an error
+	// 'argument': conversion from 'double' to 'int', possible loss of data
+	HW(int(myfunction(2))); // Shows that we inteded to convert, removes error
+	HW(int(myfunction(myfunction(2))));
+}
+
+void HW(int x) {// definition
+	std::cout << "Hello World " << x << "!\n";
+}
+
+--------------------------------------
+output.txt:
+--------------------------------------
+Hello World!
+Hello World 0!
+Hello World 1!
+Hello World 2!
+Hello World 6!
+Hello World 38!
