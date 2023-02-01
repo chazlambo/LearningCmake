@@ -1,6 +1,7 @@
 // Pointers and memory allocations
 
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <cstddef>
 #include <vector>
@@ -9,9 +10,21 @@
 #include <cassert>
 #include <cstring>
 
+using namespace std;
+
 
 int main(int argc, char* argv[])
 {
+    // Redirecting input and output to files
+    ifstream fp_in;                         // Create I/O file streams
+    ofstream fp_out;
+    fp_in.open("../input.txt", ios::in);    // Open I/O file streams
+    fp_out.open("../output.txt", ios::out);
+    streambuf *cinbuf = cin.rdbuf();        // Save old buf
+    streambuf *coutbuf = cout.rdbuf();
+    cin.rdbuf(fp_in.rdbuf());               // Redirect cin and cout to file streams
+    cout.rdbuf(fp_out.rdbuf());     
+
     //--------------------------------
     // Memory addresses, & operator, * operator
     //--------------------------------
@@ -164,6 +177,13 @@ int main(int argc, char* argv[])
     //ANSWER: waits
 
     std::cout << *(str_ptr - 2) << "\n";
+
+
+    // Close Files and reset to standard I/O
+    fp_in.close();
+    fp_out.close();
+    cin.rdbuf(cinbuf);
+    cout.rdbuf(coutbuf);
 
     return 0;
 }

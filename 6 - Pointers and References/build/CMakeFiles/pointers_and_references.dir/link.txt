@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/pointers_and_references.dir/PointersAndReferences.cpp.o -o pointers_and_references 
