@@ -1,0 +1,22 @@
+1D Arrays:
+5 10 15 
+2 4 6 8 10 
+
+2D Array:
+1 2 3 4 5 
+2 4 6 8 10 
+3 6 9 12 15 
+
+Characters Test: 
+Hello
+Hello
+Change one character at a time
+Hell 
+Hill 
+Hi
+
+ STL Vector Test: 
+I have 3 ints
+The first one is 5
+The entire array is: 
+5 2 3 

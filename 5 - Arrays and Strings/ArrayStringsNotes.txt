@@ -1,0 +1,34 @@
+Arrays and Strings
+
+Important Points
+	-Array vs Single Variable
+	-Characters
+	-Strings
+	-Type Alias
+	-Coding Style
+		-Code has to be readable by humans
+		-Avoid global variables
+		-Indentation
+
+Arrays
+	int numbers[256];		// Create fixed size array of 256 elements
+	using Array = int[256];	// Alias array of 256 as Array
+	Array numbers;			// same as int numbers[256] after aliasing array
+
+Characters
+	ASCII: 8 bits to represent character, 256 possible symbols
+	We now use Unicode which allows many more characters
+		Also much more complex, commonly encoded as UTF-8
+	Use single quotes fro characters, double quotes are for strings
+
+Strings and Inputs
+	std:: string: simplifies dealing with sequences of characters
+		Resizing, finding characters, etc.
+	Input: We can use std::cin to read input from the console
+		Can read input separated by any whitespace (space, newline, tab)(e.g. word by word)
+		Can also read input separated just by newlines (e.e., line by line)
+		Can also read input separated by arbitrary characters(commas, etc.)
+
+STL vector, aka std::vector
+	A std::vector is a sequence of elements of hte same type where the type is written in carrots <,> for example: std::vector<int> is a sequence of ints
+	Need to #include<vector>

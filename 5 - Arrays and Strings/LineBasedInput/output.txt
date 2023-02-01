@@ -1,0 +1,12 @@
+Enter a line: Entered: This method reads the whole line at a time.
+Enter a line: Entered: The function repeats until I type the specified word, which is:
+Enter a line: Entered: Quit
+Enter a line: Entered: Except it's case sensitive!
+Enter a line: 
+
+Enter your name: 
+Enter your age: 
+ Where do you live?
+
+Your name is Charlie and you're 21 years old.
+You live at 'Salt Lake City, Utah'

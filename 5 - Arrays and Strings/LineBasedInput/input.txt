@@ -1,0 +1,7 @@
+This method reads the whole line at a time.
+The function repeats until I type the specified word, which is:
+Quit
+Except it's case sensitive!
+quit
+Charlie 21
+Salt Lake City, Utah
