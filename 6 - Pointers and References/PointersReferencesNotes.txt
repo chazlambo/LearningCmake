@@ -1,0 +1,178 @@
+Pointers and References
+
+-Can refer to existing variables in memory indirectly and modify them
+-References can't be reassigned
+	int a = 0; // Integer variable
+	&a; // & is the "address-of" operator
+	int * b; //pointer to integer
+	*b = 10; // dereference operator (*), it can be read as "value pointed to by"
+	int& r_a = a; // reference to int
+
+	int a = 0;
+	// & is the address-of operator
+	int *b = &a // value stored is location of a
+	*b = 10; // writes value of ten to address of a, making a=10
+	int *c = b; //  new pointer same as b, both point to memory location of a
+	int d = 2; // initialize new integer with value of 2
+	b = &d; //change b to now point to the address of d
+
+	End Result:
+
+			Address		Value
+	a		 0x0001		  10      
+	b		 0x0005		0x000D		//Goes to d
+	c		 0x0009		0x0001		//Goes to a
+	d		 0x000D		   2
+
+
+Pointers to Pointers
+
+	int a = 5;
+	int *b = &a; //Pointer to integer a
+	int **c = &b; //Pointer to the pointer variable b
+
+			Address		Value
+	a		 0x0001		   5      
+	b		 0x0005		0x0001		//Goes to a
+	c		 0x0009		0x0005		//Goes to b
+
+	int d = 7;
+	*c = &d // write address of d to value of b (because c is pointing to b)
+
+			Address		Value
+	a		 0x0001		   5      
+	b		 0x0005		0x000D		//Goes to d
+	c		 0x0009		0x0005		//Goes to b
+	d		 0x000D		   7
+
+References
+
+	int a = 2;
+	int &b = a; //& denotes a reference type
+
+			Address		Value
+	a		 0x0001		   2      
+	b		 0x0005		0x000D1		//Goes to a
+
+
+References vs Pointers:
+	-References automatically dereference, pointers must be dereferenced using *
+	-References can't be re-assigned pointers can be re-assigned to point to different objects
+
+
+References vs Pointers Examples:
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Example 1:
+
+	int num = 100;
+	int num2 = 200;
+	int* num_ptr = &num;
+	num_ptr = &num2;
+	int& num_ref = num;
+	num_ref = num2; // Same as saying num = num2
+	num_ref = &num2; // This won't work, because num_ref needs an integer not an address
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Example 2:
+
+int num = 100;
+int* num_ptr = &num;			// Make a pointer to num
+int& num_ref = num;				// Make a reference to num
+(int*)&num_ptr_ref = num_ptr;	// Reference to (int*)
+
+std::cout << num_ptr_ref;		// std::cout << num_ptr
+num_ref -= 2;					// num-=2
+*num_ptr_ref += 1;				// *num_ptr += 1, or num += 1
+
+
+
+
+
+Pointers (32-bit architecture)
+	
+	int num = 100;
+	int* num_ptr = &num;
+
+Byte Address	120		121		122		123		124		125		126		127		128		129		130		131		132		133		134		135	
+Memory			...		...		...		100		100		100		100		123		123		123		123		...		...		...		...		...
+										  ^1	  ^2	  ^3	  ^4	  ^1	  ^2	  ^3	  ^4
+										|------------num------------|   |----------num_ptr----------|
+
+Pointers (32-bit architecture)
+	
+	int num = 100;
+	int* num_ptr = &num;
+
+Byte Address	120		121		122		123		124		125		126		127		128		129		130		131		132		133		134		135	
+Memory			...		...		...		100		100		100		100		123		123		123		123		123		123		123		123		...
+										  ^1	  ^2	  ^3	  ^4	  ^1	  ^2	  ^3	  ^4      ^5	  ^6	  ^7	  ^8
+										|------------num------------|   |--------------------------num_ptr--------------------------|
+
+
+
+
+
+Examples: Pointers (32-bit architecture)
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Example 1:
+
+	int num = 100;
+	int* num_ptr = &num;
+	int** num_ptr_ptr = &num_ptr
+
+Byte Address	120		121		122		123		124		125		126		127		128		129		130		131		132		133		134		135	
+Memory			...		...		...		100		100		100		100		123		123		123		123		127		127		127		127		...
+										  ^1	  ^2	  ^3	  ^4	  ^1	  ^2	  ^3	  ^4	  ^1	  ^2	  ^3	  ^4
+										|------------num------------|   |----------num_ptr----------|   |--------num_ptr_ptr--------|
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Example 2:
+
+	int num = 100, num2 = 200;
+	int* num_ptr = &num;
+	num_ptr = &num2; // assuming num2 is at byte 150
+
+Byte Address	120		121		122		123		124		125		126		127		128		129		130		131		132		133		134		135	
+Memory			...		...		...		100		100		100		100		150		150		150		150		...		...		...		..		...
+										  ^1	  ^2	  ^3	  ^4	  ^1	  ^2	  ^3	  ^4	  
+										|------------num------------|   |----------num_ptr----------|   
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Example 3:
+
+	int num = 100;
+	int* num_ptr = &num;
+	num_ptr -= 1;
+
+Byte Address	120		121		122		123		124		125		126		127		128		129		130		131		132		133		134		135	
+Memory			...		...		...		 99		 99		 99		 99		150		150		150		150		...		...		...		..		...
+										  ^1	  ^2	  ^3	  ^4	  ^1	  ^2	  ^3	  ^4	  
+										|------------num------------|   |----------num_ptr----------|   
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Example 4:
+
+	int num = 100;
+	int* num_ptr = &num;
+	char temp = 'a';
+	int* num_ptr2 = num_ptr + 1; // In pointer arithmetic, +-1 assumes entire size of object (4 bytes in this case), giving 123+(1*4) = 127
+
+Byte Address	120		121		122		123		124		125		126		127		128		129		130		131		132		133		134		135	
+Memory			...		...		...		100		100		100		100		150		150		150		150		'a'		127		127		127		127
+										  ^1	  ^2	  ^3	  ^4	  ^1	  ^2	  ^3	  ^4	          ^1	  ^2	  ^3	  ^4
+										|------------num------------|   |----------num_ptr----------|			|----------num_ptr----------|
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Example 5:
+
+	int num = 100;
+	int* num_ptr = &num;
+	char temp = 'a';
+	char* temp_ptr = &temp + 2; // adding assumes entire size of object (only 1 byte in this case), giving 131 + (2*1) = 133
+
+Byte Address	120		121		122		123		124		125		126		127		128		129		130		131		132		133		134		135	
+Memory			...		...		...		100		100		100		100		150		150		150		150		'a'		133		133		133		133
+										  ^1	  ^2	  ^3	  ^4	  ^1	  ^2	  ^3	  ^4	          ^1	  ^2	  ^3	  ^4
+										|------------num------------|   |----------num_ptr----------|			|---------temp_ptr----------|
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
