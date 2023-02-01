@@ -1,0 +1,67 @@
+Cleanup of An Object
+
+Use Destructors:
+	-Its name is the class name preceded by a ~
+	-It has no argument
+	-It is used to release dynamically allocated memory and to perform other "cleanup" activities
+	-It is executed automatically when the object goes out of scope.
+
+
+class Str
+{
+	char*pData;		// Where we store the sequence of characters
+	int nLength;	// Integer that gives length of string
+
+	public
+		//Constructors
+		Str();					//Default Constructor
+		Str(char *s);			//Copy of string
+		Str(const Str &str)		//Reference to a string
+
+		//Accessors
+		char* get_Data();
+		int get_Len();
+
+		//Destructor
+		~Str();
+}
+
+Str::Str(){
+	pData = new char[1];	// Empty string still allocate a character
+	*pData = '\0';			// \0 is for empty string
+	nLength = 0;			// String length zero
+}
+
+Str::Str(char *s) {
+	pData = new char[strlen(s)+1];	// allocate space for string
+	strcpy(pData, s);
+	nLength = strlen(s);
+}
+
+Str::Str(const Str &str) {
+	int n = str.nLength;		// Copy the length from other str
+	pData = new char[n+1];		// Allocate an array
+	nLength = n;				// Set length of this array
+	strcpy(pData,str.pData)		// Copy string itself
+}
+
+char* Str::get_Data()
+{
+	return pData;
+};
+
+int Str::get_Len(){
+	return nLength;
+};
+
+Str::~Str() {
+	~delete[] pData
+};
+
+
+int main() {
+	int x = 3;
+	Str*pStr1 = new Str("Joe");
+	Str*pStr2 = newStr();
+
+}
