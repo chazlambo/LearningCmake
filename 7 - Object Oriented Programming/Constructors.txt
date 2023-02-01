@@ -1,0 +1,76 @@
+Object Initialization
+
+Constructors are used to define objects at creation to prevent them from being in a non initialized state.
+This ensures that they are always in a proper state.
+
+Constructors always have the same name as the class.
+
+Constructor Types: Each type has different input parameters so the compiler can decide which to use
+	-Default Constructor:
+		-Class is declared with no constructors
+			Rectangle::Rectangle(){};
+	-Copy Constructor: class is declared
+		-Assigns all variables inside class one by one based on reference object
+		-Can access private variables!
+			Rectangle::Rectangle(const Rectangle & r) {
+				width = r.width; length = r.length
+			}
+	-Constructor with Parameters
+		-
+		-Constructs object with parameters specified
+
+
+class Rectangle
+{
+	private:
+		int width;
+		int length;
+	public:
+		Rectangle();					// Default Constructor
+		Rectangle(const Rectangle &r);	// Copy Constructor
+		Rectangle(int w, int l);		// Constructor with Parameters
+		void set(int w, int l)
+		int area();
+}
+
+int main() {
+	
+	//Default Constructor
+	//Dot Notation
+	Rectangle r1; 
+	r1.set(5,8);
+
+	//Arrow Notation
+	Rectangle *r2;
+	r2 = &r1;
+	r2->set(8,10);
+
+	Rectangle *r3;
+	r3 = new Rectangle();
+	r3->set(80,100);		//arrow notation
+	delete r3; // Delete object itself
+	r3 = nullptr; // Reset pointer
+
+	//Copy Constructor
+	Rectangle r4;						
+	r4.set(60,80);
+
+	Rectangle r5 = r4;					// These are the same
+	Rectangle r6(r4);					// These are the same
+	Rectangle *r7 = new Rectangle(r4)	// These are the same(ish)
+
+	// Every new statement needs to be deleted after use to prevent memory leak
+}
+
+//Constructors
+Rectangle::Rectangle() { // Default Constructor
+	width = 20;
+	length = 50;
+}
+
+Account::Account(const Account &a) {
+	name = new char[strlen(a.name)+1];	// Allocate enough space for the string
+	strcpy(name,a.name);				// Assign value to allocated space
+	balance=a.balance;
+	id=a.id
+}
