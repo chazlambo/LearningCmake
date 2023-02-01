@@ -1,0 +1,147 @@
+Object-Oriented Programing
+
+Introduction to Classes
+	-Class Definition
+	-Class Examples
+	-Objects
+	-Constructors
+	-Deconstructors
+
+
+Class:
+	-The class is the cornerstone of C++
+		-It makes possible encapsulation, data hiding and inheritance
+	-Type
+		-Concrete representation of a concept
+			-Eg. float with operations like -, *, + (math real numbers)
+	-Class
+		-A user defined type
+		-Consists of both data and methods
+		-Defines properties and behavior of that type
+	-Advantages
+		-Types matching program concepts
+			-Game Program (Explosion type)
+		-Concise Program
+		-Easier Code Analysis
+		-Compiler can detect illegal uses of types
+	-Data Abstraction
+		-Separate the implementation details from its essential properties
+
+Objects: Instances of a class
+
+Define a Class Type
+
+class class_name
+{
+	permission_label: //private, public
+		member;
+	permission_label:
+		member;
+}
+
+
+Class Definition:
+
+Data Members:
+	-Can be of any type, built-in or user defined
+	-non-static data member
+		-Each class object has its own copy
+	-Static
+		-Acts as a global variable for class
+		-One copy per class type
+		-e.g. counter of number of class objects made
+
+Member Functions:
+	-Used to
+		-Accessors: Access the values of the data members 
+		-Implementor: Perform operations on the data members 
+	-Are declared inside the class body
+	-Their definition can be placed inside the class body, or outside the class body
+	-Can access both public and private members of the class
+	-Can be referred to using dot or arrow member access operator
+
+Const Member Function:
+	-Declaration:
+		-return_type func_name(para_list)const;
+	-Definition:
+		-return_type func_name(para_list)const{...}
+		-return_type class_name::func_name(para_list)const{...}
+	-By writing const for methods that aren't meant to modify values, a lot of errors can be avoided.
+	-Example shown below
+
+Access Control:
+	-Information hiding
+		-To prevent the internal representation from direct access from outside the class
+	-Access Specifiers
+		-public
+			-may be accessible from anywhere within a program
+		-private
+			-may be accessed only by the member functions, and friends of this class
+		-protected
+			-acts as a public for derived classes
+			-behaves as private for the rest of the program
+
+Access Control
+	-The default access specifier is private
+	-The data members are usually private or protected
+	-A private member function is a helper, may only be accessed by another member function of the same class
+		-(exception friend function)
+	-The public member functions are part of the class interface
+	-Each access control section is optional, repeatable, and sections may occur in any order
+
+
+
+SIMPLE EXAMPLE
+-------------------------------------------
+class Rectangle
+{
+	private:
+		int width;
+		int length;
+		static int count;
+	public:
+		void set(int w, int l);
+		int area() {return width*length;} // THIS IS AN INLINE DEFINITION
+};
+
+//Functions defined outside of class:
+void Rectangle::set(int w, int l){
+	width = w;
+	length = 1;
+}
+
+int main(){
+// Objects: Instace of a class
+	Rectangle r1;
+	Rectangle r2;
+	Rectangle* rp = &r1;
+
+// Sets r1 width to 5 and length to 8
+	r1.set(5,8); // Dot operator using object itself
+	rp->set(5,8); // Arrow operator using pointer to object
+
+}
+-------------------------------------------
+
+CONST MEMBER FUNCTION EXAMPLE
+-------------------------------------------
+class Time
+{
+	private:
+		int hrs;
+		int mins;
+		int secs;
+	public:
+		Time (int initHrs, int initMins, int initSecs); // Constructor
+		Time ();										// Default Constructor
+		void Set(int hours, int minutes, int seconds);
+		void Increment();
+		void Write() const;
+};
+
+
+void Time::Write()const
+{
+	cout << hrs <<":"<< mins <<":"<< secs << endl;
+}
+-------------------------------------------
