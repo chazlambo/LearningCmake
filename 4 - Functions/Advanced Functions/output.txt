@@ -1,0 +1,23 @@
+Clamped Angle = 90
+Clamped Angle (30, 60) = 60
+Clamped Angle (120, __ ) = 120
+max of 10 and 20		= max_int
+20
+max of 10.0 and 20.0 	= max_double
+20
+max of 10.1 and 10.0 	= max_double
+10.1
+Size of vector: 5
+Size of vector after pushback: 7
+Using ++i: 		1 4 16 24 91 23 32 
+ Using auto&&: 		1 4 16 24 91 23 32 
+The sum is 191
+
+Using Hard Code in Main: 
+Before a = 5, b = 10
+After a = 10, b = 5
+
+Using Function With References: 
+ Before a = 10, b = 5
+After a = 5, b = 10
+Windows 10 is not awesome.

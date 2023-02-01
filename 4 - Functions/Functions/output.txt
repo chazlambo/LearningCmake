@@ -1,0 +1,22 @@
+a = 10
+In Loop Counter = 0
+In Loop Counter = 1
+In Loop Counter = 2
+In Loop Counter = 3
+Out of Loop Counter = 0
+
+shadowed = 30
+shadowed = 10
+
+Hello there!
+
+Student: Lisa Simpson
+	Midterm: 100
+	Final: 100
+	Homework: 100
+	Overall: 100
+Student: Morty
+	Midterm: 70
+	Final: 95
+	Homework: 60
+	Overall: 76

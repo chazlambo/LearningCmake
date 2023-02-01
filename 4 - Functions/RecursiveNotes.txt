@@ -1,0 +1,19 @@
+Recursive Functions:
+
+Recursion
+	-Functions can call other functions but they can also call themselves
+		-Called a recursive function
+	-Some algorithms can be implemented very elegantly using recursion
+	-Each function uses some memory (its stack), allocated this stack space can have overhead in recursion
+		-Tail-call optimization: when compiling with optimization (Release mode) the compiler is often smart enough to convert recursion to iteration and remove this overhead
+
+Examples:
+	Factorial
+		Factorial is defined by the product
+		n! = 1*2*3*..*(n-1)*n,
+		Equivalent to the recursive formula:
+		n! = n*(n-1)!
+
+	Fibonacci
+		F0 = 0, F1 = 1
+		Fn = Fn-1 + Fn-1, for n > 1
