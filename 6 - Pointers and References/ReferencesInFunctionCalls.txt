@@ -1,0 +1,98 @@
+Function Calls
+
+Const References or Pointer Arguments
+	-We want to use an existing (possibly large) object in a function without copying it
+	-With a pointer we use the -> operator to refer to member variables and methods
+
+		void print(const std::vector<int> &v) { //Const makes it so it won't modify the object outside of the function
+			for (size_t i = 0; i < v->size(); ++i){
+				std::cout << "v[" << i << "] = " << v->at(i) << "\n";
+			}
+		}
+
+		int main() {
+			std::vector<int> vec = {...};
+			print(&vec);
+			return 0;
+		}
+
+References or Pointer Arguments
+	-We want to use an existing object and modify its value in a function
+	
+		void swap(int& x, int& y) {
+			int temp;
+			temp = x;	// save the value at address x
+			x = y;		// put y into x
+			y = temp;	// put x into y
+		return;
+		}		
+
+		int main () {
+			int a = 100;
+			int b = 200;
+			swap(a,b);
+			return 0;
+		}
+
+
+==================================================================
+EXAMPLE 1: 
+
+void swap(int *a, int *b){
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+int main(){
+	int a = 6;
+	int b = -12;
+	swap(&a, &b);
+	return 0;
+}
+-------Stack Frame 0:(main)------
+			Address		Value
+	a		 0x0001		   6 -->12
+	b		 0x0005		  -12-->6
+---------------------------------
+
+-------Stack Frame 1:(swap)------
+			Address		Value
+	a		 0x0021		0x0001
+	b		 0x0025		0x0005
+	tmp		 0x0029		6
+---------------------------------
+
+==================================================================
+EXAMPLE 2:
+
+void swap(char*& a, char*& b){  //char*$a is a reference to pointer a
+								//by removing the &, swap won't be carried out of the function
+	char *tmp = a;
+	*a = *b;
+	*b = tmp;
+}
+
+int main(){
+	char a[] = "Hello";
+	char b[] = "World";
+	char *a_ptr = a;
+	char *b_ptr = b;
+	swap(a_ptr, b_ptr);
+	return 0;
+}
+-------Stack Frame 0:(main)------
+			Address		Value
+	a		 0x0001		"Hello"
+	b		 0x0007		"World"
+	a_ptr	 0x000D		0x0001
+	b_ptr	 0x0011		0x0007
+---------------------------------
+
+-------Stack Frame 1:(swap)------
+			Address		Value
+	a		 0x0021		0x0001 -->0x0007
+	b		 0x0025		0x0007 -->0x0001
+	tmp		 0x0029		 null  -->0x0001
+---------------------------------
+
