@@ -1,0 +1,19 @@
+==================================================================
+Pointers and Const
+==================================================================
+	const int num = 100;
+	int num2 = 200;
+	num = 99; // NOT LEGAL
+
+	const int* num_ptr = &num; // same as int const*
+	*num_ptr = 99; // STILL NOT LEGAL
+
+	num_ptr = &num2;
+	*num_ptr = 99; // STILL NOT LEGAL BECAUSE WE INITIALIZED POINTER FOR CONST INT
+
+	int *const num_const_ptr = &num; // the pointer is const
+	*num_const_ptr = 99; // THIS IS LEGAL
+
+	num_const_ptr = &num2; // NOT LEGAL BECAUSE POINTER IS CONST
+
+===================================================================
