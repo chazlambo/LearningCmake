@@ -12,6 +12,8 @@
 #include <bitset>
 #include <cctype>
 
+using namespace std;
+
 int main() {
 	// Redirecting output to files
 	ofstream fp_out;

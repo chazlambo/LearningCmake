@@ -1,0 +1,31 @@
+a = "a"
+a = 01100001
+a = 97
+48
+c - a = 2
+c + a = 196
+
+false
+true
+true
+true
+true
+true
+false
+false
+true
+
+We're at University of Utah
+Utah is 4 characters long
+str1 and str2 are cyclic permutations
+str1 and str3 are NOT cyclic permutations
+
+green apple is not red apple
+still, green apple is an apple
+and red apple is also an apple
+therefore, both are apples
+
+Enter your name: Enter your age: Your age must be an integer! Making you a newborn...
+0
+Your age must be an integer! Making you a newborn...
+0

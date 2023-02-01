@@ -1,0 +1,3 @@
+/home/charlie/Documents/CmakeTutorial/5 - Arrays and Strings/Strings/build/CMakeFiles/strings.dir
+/home/charlie/Documents/CmakeTutorial/5 - Arrays and Strings/Strings/build/CMakeFiles/edit_cache.dir
+/home/charlie/Documents/CmakeTutorial/5 - Arrays and Strings/Strings/build/CMakeFiles/rebuild_cache.dir
